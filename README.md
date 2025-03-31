@@ -1,79 +1,49 @@
 # SQL_Python
-Product Database Management
-This Python project demonstrates how to create and manage a simple SQLite database to store product information, including the product name, manufacturer, new price, old price, and the calculated average price.
+# Product Database Script
 
-Features:
-Create a database table for products if it doesn't already exist.
+## Description
 
-Add new products to the table with checks to avoid duplicates.
+This Python script connects to a SQLite database and manages a list of products. The script includes functionality for adding products to the database, checking if a product already exists, and calculating an average price for each product. The script also prints the list of products in a nice, tabular format.
 
-Automatically calculate the average price of a product when it is added.
+## Features
 
-Display the data in a readable table format using the tabulate library.
+- **Product Management**: Add products to the database.
+- **Average Price Calculation**: Automatically calculates and updates the average price of a product based on the new and old price.
+- **SQLite Database**: Uses SQLite to store product information.
+- **Tabular Output**: Displays products in a formatted table using the `tabulate` library.
 
-Requirements:
-Python 3.x
+## How It Works
 
-SQLite3 (Included with Python by default)
+1. The script connects to a SQLite database (it will be created if it doesn't exist).
+2. It ensures the `products` table is present.
+3. The script includes a check for duplicates, so products will only be added if they don't already exist in the database.
+4. The `average_price` is calculated as the average of `new_price` and `old_price` for each product.
+5. The products are displayed in a nicely formatted table.
 
-tabulate library (for displaying the data in a tabular format)
+## Requirements
 
-To install tabulate, you can run:
+- Python 3.x
+- SQLite
+- `tabulate` library (install via `pip install tabulate`)
 
-nginx
-Копировать
-pip install tabulate
-Files:
-my_database.db – SQLite database file where product data is stored.
+## Usage
 
-script.py – The Python script that manages the database and performs the operations.
+1. Run the script. It will automatically add products to the database and calculate average prices.
+2. You can modify the product details or add new products as needed.
+3. The product information will be displayed as a table.
 
-How It Works:
-Create Database and Table: If the database my_database.db does not exist, it is created, along with the table products.
+## Example
 
-Add Product: The function add_product(product_name, manufacturer, new_price, old_price) allows you to add products to the database. It checks if the product already exists to avoid duplicates. It also calculates the average price as the mean of the new_price and old_price and updates this value in the database.
+Here is an example of how products will appear:
 
-Display Products: After adding products, the program fetches and displays all products stored in the database in a clean, formatted table.
+| ID  | Product    | Manufacturer | New Price | Old Price | Average Price |
+|-----|------------|--------------|-----------|-----------|---------------|
+| 1   | Laptop     | Dell         | 1200.99   | 1500.00   | 1350.50       |
+| 2   | Smartphone | Samsung      | 800.50    | 950.00    | 875.25        |
+| 3   | Tablet     | Apple        | 600.00    | 750.00    | 675.00        |
+| 4   | Smartwatch | Garmin       | 250.00    | 300.00    | 275.00        |
+| 5   | Headphones | Sony         | 150.00    | 180.00    | 165.00        |
 
-Example Usage:
-python
-Копировать
-add_product('Laptop', 'Dell', 1200.99, 1500.00)
-add_product('Smartphone', 'Samsung', 800.50, 950.00)
-add_product('Headphones', 'Sony', 150.00, 180.00)
-This will add products to the products table, and if a product already exists, it will notify you that the product is already in the database.
+## Conclusion
 
-Code Overview:
-product_exists(product_name, manufacturer): Checks whether a product with the same name and manufacturer already exists in the database.
-
-add_product(product_name, manufacturer, new_price, old_price): Adds a new product to the table and updates the average price.
-
-SQLite Connection: Uses sqlite3 to manage the SQLite database and interact with the products table.
-
-tabulate Library: The tabulate library is used to display the database results in a pretty tabular format.
-
-Example Output:
-After running the script, the following output will be displayed:
-
-vbnet
-Копировать
-Product Laptop added to the database.
-Product Smartphone added to the database.
-Product Tablet added to the database.
-Product Smartwatch added to the database.
-Product Laptop by Dell already exists in the database.
-Product Headphones added to the database.
-
-Products in the database:
-+----+-------------+--------------+------------+------------+---------------+
-| ID | Product     | Manufacturer | New Price  | Old Price  | Average Price |
-+----+-------------+--------------+------------+------------+---------------+
-| 1  | Laptop      | Dell         | 1200.99    | 1500.00    | 1350.495      |
-| 2  | Smartphone  | Samsung      | 800.50     | 950.00     | 875.25        |
-| 3  | Tablet      | Apple        | 600.00     | 750.00     | 675.00        |
-| 4  | Smartwatch  | Garmin       | 250.00     | 300.00     | 275.00        |
-| 5  | Headphones  | Sony         | 150.00     | 180.00     | 165.00        |
-+----+-------------+--------------+------------+------------+---------------+
-License:
-This project is open source and available under the MIT License.
-
+This script helps manage a simple product database, ensuring that new products are added only if they don't already exist, and it provides a clear and user-friendly way of viewing the data.
